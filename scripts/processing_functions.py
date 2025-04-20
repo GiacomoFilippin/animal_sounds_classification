@@ -23,6 +23,11 @@ def load_data(dataset_directory=None):
     y_val = np.load(y_val_path)
     X_test = np.load(X_test_path)
     y_test = np.load(y_test_path)
+    
+    # Reshape the data to fit the model input shape
+    X_train = X_train.reshape(X_train.shape[0], 32, 32, 1)  # (samples, height, width, channels)
+    X_val = X_val.reshape(X_val.shape[0], 32, 32, 1)
+    X_test = X_test.reshape(X_test.shape[0], 32, 32, 1)
 
     return X_train, y_train, X_val, y_val, X_test, y_test
 
